@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
 export async function getStaticProps() {
     // Call an external API endpoint to get posts.
     // You can use any data fetching library
-    const res = await fetch('http://localhost:5000/summary/total-petday-of-particular-month/2020/10')
+    
+    const res = await fetch('http://localhost:5000/summary/total-petday-of-particular-month')
     const sum = await res.json();
     console.log(res);
     // By returning { props: posts }, the Blog component
