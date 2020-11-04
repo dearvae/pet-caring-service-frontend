@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     minHeight: 50,
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#1A67F0'
   },
   icon: {
     color: '#FFFFFF',
@@ -66,13 +66,13 @@ const Nav = (props) => {
               borderRadius: '14px',
             }}
           >
-            Owner
+            Admin
           </Typography>
         </Typography>
-        <Link href="/owner/home" passHref>
+        <Link href="/admin/home" passHref>
           <Button className={classes.button}>Home</Button>
         </Link>
-        <Link href="/owner/profile" passHref>
+        <Link href="/admin/profile" passHref>
           <Button className={classes.button}>My Profile</Button>
         </Link>
         <Link href="/">

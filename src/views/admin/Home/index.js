@@ -1,7 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-import OwnerNav from '../../../components/common/OwnerNav'
+import AdminNav from '../../../components/common/AdminNav'
+import AdminSummary from '../../../components/common/AdminSummary'
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -16,9 +17,9 @@ export default function Home() {
 
   return (
     <div>
-      <OwnerNav />  
+      {/* <AdminNav /> */}
       <Container className={classes.cardGrid} maxWidth="lg">
- 
+      <AdminSummary />
       </Container>
     </div>
   )
