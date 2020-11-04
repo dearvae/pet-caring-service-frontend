@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid';
 // import Container from '@material-ui/core/Container'
-// import AdminNav from '../../src/components/common/AdminNav'
+import AdminNav from '../../src/components/common/AdminNav'
 // import AdminSummary from '../../src/components/common/AdminSummary'
 
 const useStyles = makeStyles((theme) => ({
@@ -62,13 +62,13 @@ export default function Home(props) {
 //   )
     return (
     <div>
-        {/* <AdminNav /> */}
+        <AdminNav />
         <div>
             <h2>Summary of the month</h2>
         </div>
         <div>
             <Grid container spacing={3}>
-            <Grid item xs={4} style={{background:'grey'}}>
+            <Grid item xs={4}>
                 <div>
                 <h5>Total number of pets taken care of</h5>
                 <p>{props.summaryData.pets}</p>
