@@ -58,7 +58,7 @@ const Nav = (props) => {
         <Typography className={classes.title}>
           Logged In As:{' '}
           <Typography
-            variant="inline"
+            variant="inherit"
             style={{
               padding: '4px',
               backgroundColor: '#ffff1a',
