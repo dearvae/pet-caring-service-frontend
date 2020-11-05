@@ -33,9 +33,9 @@ const placeholderData = [
       payment_date: '2020-09-20T16:00:00.000Z',
       payment_mode: 'cash',
       delivery_method: 'pick up',
-      review_rating: null,
-      review_content: null,
-      review_date: null
+      review_rating: 5,
+      review_content: 'just wow, wonderful service',
+      review_date: '2020-10-08T16:00:00.000Z'
     },
     {
       start_date: '2020-10-03T16:00:00.000Z',
