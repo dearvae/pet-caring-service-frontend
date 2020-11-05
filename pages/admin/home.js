@@ -18,13 +18,14 @@ export async function getServerSideProps() {
     const today = new Date();
     const year = today.getFullYear();
     const month = today.getMonth();
-    var url = 'http://localhost:5000/summary/total-petday-of-particular-month/' + year + '/' + month;
+    console.log(process.env.API_PATH );
+    var url = process.env.API_PATH + '/summary/total-petday-of-particular-month/' + year + '/' + month;
     const res = await fetch(url);
     const sum = await res.json();
     const numpetdays = JSON.parse(sum).sum;
     console.log(res);
 
-    var url2 = 'http://localhost:5000/summary/num-pets/' + year + '/' + month;
+    var url2 = process.env.API_PATH + '/summary/num-pets/' + year + '/' + month;
     console.log(url2);
     const res2 = await fetch(url2);
     console.log("res2");
