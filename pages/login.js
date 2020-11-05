@@ -45,6 +45,7 @@ export default function Login({ data }) {
     res.json().then(json => {
       localStorage.setItem('userType', json.userType);
       localStorage.setItem('token', json.token);
+      localStorage.setItem('username', json.username);
       Router.push(`${json.userType[0]}/home`);
     });
   };
