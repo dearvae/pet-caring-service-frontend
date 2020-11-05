@@ -61,7 +61,7 @@ const Nav = (props) => {
             variant="inherit"
             style={{
               padding: '4px',
-              backgroundColor: '#ffff1a',
+              backgroundColor: '#F3D0D4',
               color: 'black',
               borderRadius: '14px',
             }}
