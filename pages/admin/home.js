@@ -68,7 +68,7 @@ export default function Home(props) {
             <h2>Summary of the month</h2>
         </div>
         <div>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} style={{padding:40}}>
             <Grid item xs={4}>
                 <div>
                 <h5>Total number of pets taken care of</h5>

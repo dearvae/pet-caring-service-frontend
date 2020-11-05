@@ -69,6 +69,9 @@ const Nav = (props) => {
             Admin
           </Typography>
         </Typography>
+        <Link href="/admin/manageCategory" passHref>
+          <Button className={classes.button}>Manage Category</Button>
+        </Link>
         <Link href="/admin/home" passHref>
           <Button className={classes.button}>Home</Button>
         </Link>
