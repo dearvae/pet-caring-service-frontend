@@ -64,7 +64,7 @@ export default function Login({ data }) {
     res.text().then(text => {
       setSuccessMsg(text);
       setShowSuccessDialog(true);
-      setTimeout(rerouteToLogin, 5000);
+      setTimeout(rerouteToLogin, 3000);
     });
   };
   const displayError = res => res.text().then(text => {

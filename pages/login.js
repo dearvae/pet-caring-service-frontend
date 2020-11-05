@@ -36,6 +36,7 @@ export default function Login({ data }) {
   const [password, setPassword] = useState("");
   const [showErrorDialog, setShowErrorDialog] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   const updatePassword = e => setPassword(e.target.value);
   const updateUsername = e => setUsername(e.target.value);
@@ -46,7 +47,8 @@ export default function Login({ data }) {
       localStorage.setItem('userType', json.userType);
       localStorage.setItem('token', json.token);
       localStorage.setItem('username', json.username);
-      Router.push(`${json.userType[0]}/home`);
+      setShowSuccessDialog(true);
+      setTimeout(() => Router.push(`${json.userType[0]}/home`), 3000);
     });
   };
 
@@ -67,6 +69,19 @@ export default function Login({ data }) {
   }
   const handleCloseErrorDialog = () => setShowErrorDialog(false);
 
+  function SuccessDialog() {
+    return (
+      <Dialog open={showSuccessDialog}>
+        <DialogTitle>Login was successful!</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Rerouting to home page in a few seconds
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
   function ErrorDialog() {
     return (
       <Dialog
@@ -85,6 +100,7 @@ export default function Login({ data }) {
 
   return (
     <Grid container className={classes.root}>
+      <SuccessDialog />
       <ErrorDialog />
       <Grid item className={classes.header} xs={12}>
         <Grid container justify="center">
