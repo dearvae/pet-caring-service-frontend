@@ -49,7 +49,7 @@ const columns = [
   "review_content", "review_date"
 ];
 
-function HistoryOrder({ data }) {
+export default function HistoryOrderView({ data }) {
   const successfulBids = data.filter(row => row.is_successful);
   const unsuccessfulBids = data.filter(row => !row.is_successful);
   const [rows, setRows] = useState(successfulBids);
@@ -110,6 +110,3 @@ function HistoryOrder({ data }) {
     </div>
   )
 }
-
-
-export default HistoryOrder
