@@ -1,6 +1,6 @@
-import HistoryOrderView from '../../src/views/owner/HistoryOrder'
+import HistoryOrdersView from '../../src/views/owner/HistoryOrders'
 
-const HistoryOrder = (props) => HistoryOrderView(props);
+const HistoryOrders = (props) => HistoryOrdersView(props);
 
 const placeholderData = [
     {
@@ -85,4 +85,4 @@ export async function getServerSideProps() {
     }
 }
 
-export default HistoryOrder;
+export default HistoryOrders;
