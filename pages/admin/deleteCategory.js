@@ -1,10 +1,14 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import AdminNav from '../../src/components/common/AdminNav'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
-import Grid from '@material-ui/core/Grid';
+import React from 'react';
+
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import AdminNav from '../../src/components/common/AdminNav';
+import { authenticate } from '../../src/auth';
+
+import { makeStyles } from '@material-ui/core/styles';
 // import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -40,6 +44,9 @@ DeleteCategory.getInitialProps = ({query: { category_name }}) =>{
 };
 
 export default function DeleteCategory({category_name}) {
+    if (typeof window !== "undefined") {
+        authenticate(window.location.pathname);
+    }
     const classes = useStyles();
     // const {
     //     query : {

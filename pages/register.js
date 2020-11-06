@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Router from 'next/router'
+
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -8,7 +10,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import makeStyles  from '@material-ui/core/styles/makeStyles';
 import MenuItem from '@material-ui/core/MenuItem';
-import Router from 'next/router'
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
@@ -34,8 +35,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Login({ data }) {
-  const { API_PATH } = data;
+export default function Login() {
   const classes = useStyles();
   const accountTypes = ['Admin', 'Owner', 'Carer'];
 
@@ -59,7 +59,7 @@ export default function Login({ data }) {
   const updateAddress = e => setAddress(e.target.value);
   const updateAccountType = e => setAccountType(e.target.value);
 
-  const rerouteToLogin = () => Router.push('login');
+  const rerouteToLogin = () => Router.push('/login');
   const handleSuccess = res => {
     res.text().then(text => {
       setSuccessMsg(text);
@@ -74,7 +74,7 @@ export default function Login({ data }) {
 
   const handleKeyPress = e => e.keyCode === 13 ? handleRegister() : '';
   const handleRegister = () => {
-    fetch(`${API_PATH}/auth/register/${accountType}`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_PATH}/auth/register/${accountType}`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -221,8 +221,4 @@ export default function Login({ data }) {
       </Grid>
     </Grid>
   )
-}
-
-export async function getStaticProps() {
-  return { props: { data: { API_PATH: process.env.API_PATH } } };
 }

@@ -8,6 +8,7 @@ import PublicIcon from '@material-ui/icons/Public'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { clearLocalStorage } from '../../auth'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,8 +79,8 @@ const Nav = (props) => {
         <Link href="/admin/profile" passHref>
           <Button className={classes.button}>My Profile</Button>
         </Link>
-        <Link href="/">
-          <Button className={classes.button} startIcon={<ExitToAppIcon />}>
+        <Link href="/login">
+          <Button className={classes.button} startIcon={<ExitToAppIcon />} onClick={clearLocalStorage}>
             Sign Out
           </Button>
         </Link>

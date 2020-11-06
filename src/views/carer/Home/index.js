@@ -1,7 +1,10 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
-import CarerNav from '../../../components/common/CarerNav'
+import React from 'react';
+
+import { authenticate } from '../../../auth';
+import CarerNav from '../../../components/common/CarerNav';
+
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -11,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Home() {
+  if (typeof window !== "undefined") {
+    authenticate(window.location.pathname);
+  }
+
   const classes = useStyles()
   return (
     <div>
