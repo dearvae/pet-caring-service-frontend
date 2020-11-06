@@ -52,8 +52,8 @@ const columns = [
 
 export default function carerHomeView({ data }) {
   const d = Date.now();
-  const currentPets = data.filter(row => (row.start_date <= d && row.end_date >= d) && row.is_successful);
-  const upcomingPets = data.filter(row => (row.start_date >= d) && row.is_successful);
+  const currentPets = data.filter(row => (new Date(row.start_date) <= d && new Date(row.end_date) >= d) && row.is_successful);
+  const upcomingPets = data.filter(row => (new Date(row.start_date) >= d) && row.is_successful);
   const [rows, setRows] = useState(currentPets);
   const [disableCurrentPets, setDisableCurrentPets] = useState(true);
   const [disableUpcomingPets, setDisableUpcomingPets] = useState(false);
