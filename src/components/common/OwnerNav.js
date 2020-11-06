@@ -84,6 +84,9 @@ const Nav = (props) => {
         <Link href="/owner/home" passHref>
           <Button className={classes.button}>Home</Button>
         </Link>
+        <Link href="/owner/pet/pets" passHref>
+          <Button className={classes.button}>My Pets</Button>
+        </Link>
         <Link href="/owner/profile" passHref>
           <Button className={classes.button}>My Profile</Button>
         </Link>

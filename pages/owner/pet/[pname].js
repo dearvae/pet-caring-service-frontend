@@ -17,31 +17,28 @@ export async function getServerSideProps(context) {
 
 export default function petPage(props) {
 
-    const [username, setUsername] = useState("");
     const [petInfo, setPetInfo] = useState({});
     const [carerList, setCarerList] = useState([]);
 
 	useEffect(() => {
-        setUsername(localStorage.getItem('username'));
-        const url = `${process.env.NEXT_PUBLIC_API_PATH}/pets/${username}/${props.pname}`;
+        const url = `${process.env.NEXT_PUBLIC_API_PATH}/pets/${localStorage.getItem('username')}/${props.pname}`;
         console.log(url);
-		fetch(url)
-		.then(res => {
-            if(res.status == 200) {
-                setPetInfo(res.json());
-                console.log(petInfo);
-                fetch(`${process.env.NEXT_PUBLIC_API_PATH}/carers/category/` + petInfo.belongs)
-                .then(res => res.status == 200 ? res.json() : [])
+        fetch(url)
+        .then(res => res.json())
+		.then(info => {
+                setPetInfo(info);
+                fetch(`${process.env.NEXT_PUBLIC_API_PATH}/carers/category/` + info.belongs)
+                .then(res => res.json())
                 .then(carerList => {
                     setCarerList(carerList);
                 });	
-            } 
-        });
-      
-        
-	  }, []);
+                console.log(carerList);
+            }) 
     
+	  }, []);
+
     return (
+       
         <div>
             <OwnerNav />
             <PetCard petInfo={petInfo} />

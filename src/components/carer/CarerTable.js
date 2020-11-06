@@ -53,6 +53,7 @@ const CarerTable = (props) => {
     const classes = useStyles()
     const router = useRouter()
     const { carerList } = props;
+    console.log(carerList);
 
   return (
     <div className={classes.root}>
@@ -60,12 +61,12 @@ const CarerTable = (props) => {
       icons={tableIcons}
       title="Carer List"
       columns={[
-        { title: 'Name', field: 'name' },
+        { title: 'Name', field: 'carer_name' },
         { title: 'Rating', field: 'rating' },
         { title: 'Area', field: 'area' },
         { 
             title: 'Type',
-            field: 'isfulltime',
+            field: 'is_fulltime',
             lookup: { true: 'Full time', false: 'Part Time' },
         },
       ]}
