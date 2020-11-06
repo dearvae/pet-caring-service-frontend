@@ -1,4 +1,5 @@
 import React from 'react'
+import { authenticate } from '../../src/auth'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid';
 // import Container from '@material-ui/core/Container'
@@ -50,6 +51,9 @@ export async function getServerSideProps() {
   }
   
 export default function Home(props) {
+    if (typeof window !== "undefined") {
+        authenticate(window.location.pathname);
+    }
     const classes = useStyles()
 
 
