@@ -26,7 +26,7 @@ export async function getServerSideProps() {
     const res = await fetch(process.env.API_PATH + '/carers');
     const carerList = await res.json();
     console.log(carerList);
-
+    
     return {
         props: {
             carerList,
@@ -46,8 +46,11 @@ export default function Home(props) {
         textAlign: 'center',
         background: '#364d79',
     };
-
+    if (typeof window !== 'undefined') {
+        console.log(localStorage.getItem('username'));
+    }
     return (
+        
     <div className={classes.root}>
         <OwnerNav />
         <Title className={classes.title}>Welcome to Pet Caring Service System</Title>
