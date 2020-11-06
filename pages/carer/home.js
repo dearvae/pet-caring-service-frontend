@@ -50,7 +50,7 @@ const placeholderData = [
 export async function getServerSideProps() {
     // Fetch data from external API
     try {
-        const res = await fetch(`${process.env.API_PATH}/carers/bids/dearvae/`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_PATH}/carers/bids/${localStorage.getItem('username')}/`);
         const data = await res.json();
         // Pass data to the page via props
         return { props: { data } };

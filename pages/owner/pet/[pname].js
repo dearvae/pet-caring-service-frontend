@@ -32,7 +32,6 @@ export default function petPage(props) {
                 .then(carerList => {
                     setCarerList(carerList);
                 });	
-                console.log(carerList);
             }) 
     
 	  }, []);
