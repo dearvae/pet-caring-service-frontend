@@ -18,7 +18,7 @@ export default function petPage(props) {
 
     const [username, setUsername] = useState("");
     const [petInfo, setPetInfo] = useState({});
-	const [carerList, setCarerList] = useState({});
+	const [carerList, setCarerList] = useState([]);
 	useEffect(() => {
 		setUsername(localStorage.getItem('username'));
 		fetch(process.env.API_PATH + `/pets/${username}/${props.pname}`)
