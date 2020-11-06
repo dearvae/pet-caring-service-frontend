@@ -49,10 +49,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const CarerTable = (props) => {
+const ReviewList = (props) => {
     const classes = useStyles()
     const router = useRouter()
-    const { carerList } = props;
+    const { reviewList } = props;
+    const { review_rating, review_content, review_date } = reviewList;
 
   return (
     <div className={classes.root}>
@@ -60,30 +61,17 @@ const CarerTable = (props) => {
       icons={tableIcons}
       title="Carer List"
       columns={[
-        { title: 'Name', field: 'name' },
-        { title: 'Rating', field: 'rating' },
-        { title: 'Area', field: 'area' },
-        { 
-            title: 'Type',
-            field: 'isfulltime',
-            lookup: { true: 'Full time', false: 'Part Time' },
-        },
+        { title: 'Content', field: 'review_content' },
+        { title: 'Rating', field: 'review_rating' },
+        { title: 'Date', field: 'review_date' },
       ]}
-      data={carerList}        
-      actions={[
-        {
-          icon: () => <InfoIcon />,
-          tooltip: 'Check Detail',
-          onClick: (event, rowData) => router.push('/owner/findcarer/' + rowData.carer_name)
-        },
-      ]}
+      data={reviewList}        
       options={{
-        search: true,
-        actionsColumnIndex: -1
+        search: true
       }}
     />
     </div>
     )
 }
 
-export default CarerTable
+export default ReviewList

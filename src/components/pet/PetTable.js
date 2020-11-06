@@ -60,16 +60,16 @@ const PetTable = (props) => {
 				icons={tableIcons}
 				title="Pet List"
 				columns={[
-					{ title: 'Name', field: 'name' },
+					{ title: 'Name', field: 'pname' },
 					{ title: 'Requirements', field: 'requirements' },
-					{ title: 'Category', field: 'category' }
+					{ title: 'Category', field: 'belongs' }
 				]}
 				data={petList}
 				actions={[
 					{
 						icon: () => <InfoIcon />,
 						tooltip: 'Check Detail',
-						onClick: (event, rowData) => router.push('/owner/pet/[owner_name]/' + rowData.pname)
+						onClick: (event, rowData) => router.push('/owner/pet/' + rowData.pname)
 					}
 				]}
 				options={{

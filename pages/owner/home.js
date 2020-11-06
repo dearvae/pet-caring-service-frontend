@@ -46,9 +46,7 @@ export default function Home(props) {
         textAlign: 'center',
         background: '#364d79',
     };
-    if (typeof window !== 'undefined') {
-        console.log(localStorage.getItem('username'));
-    }
+
     return (
         
     <div className={classes.root}>
