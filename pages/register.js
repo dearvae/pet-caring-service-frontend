@@ -46,6 +46,7 @@ export default function Login() {
   const [area, setArea] = useState("");
   const [address, setAddress] = useState("");
   const [accountType, setAccountType] = useState("Admin");
+  const [carerType, setCarerType] = useState("Full-time");
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
   const [showErrorDialog, setShowErrorDialog] = useState(false);
@@ -58,6 +59,7 @@ export default function Login() {
   const updateArea = e => setArea(e.target.value);
   const updateAddress = e => setAddress(e.target.value);
   const updateAccountType = e => setAccountType(e.target.value);
+  const updateCarerType = e => setCarerType(e.target.value);
 
   const rerouteToLogin = () => Router.push('/login');
   const handleSuccess = res => {
@@ -74,12 +76,16 @@ export default function Login() {
 
   const handleKeyPress = e => e.keyCode === 13 ? handleRegister() : '';
   const handleRegister = () => {
+    const body = { username, password, name, phone, area, address }
+    if (accountType === "Carer") {
+      body.isFulltime = String(carerType === "Full-time")
+    }
     fetch(`${process.env.NEXT_PUBLIC_API_PATH}/auth/register/${accountType}`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, password, name, phone, area, address })
+      body: JSON.stringify(body)
     })
     .then(res => res.ok ? handleSuccess(res) : displayError(res));
   };
@@ -134,10 +140,6 @@ export default function Login() {
             variant="outlined"
             onKeyDown={handleKeyPress}
           />
-        </Grid>
-      </Grid>
-      <Grid item className={classes.input} xs={12}>
-        <Grid container justify="center">
           <TextField
             onChange={updatePassword}
             label="Password"
@@ -156,10 +158,6 @@ export default function Login() {
             variant="outlined"
             onKeyDown={handleKeyPress}
           />
-        </Grid>
-      </Grid>
-      <Grid item className={classes.input} xs={12}>
-        <Grid container justify="center">
           <TextField
             onChange={updatePhone}
             label="Phone"
@@ -178,10 +176,6 @@ export default function Login() {
             variant="outlined"
             onKeyDown={handleKeyPress}
           />
-        </Grid>
-      </Grid>
-      <Grid item className={classes.input} xs={12}>
-        <Grid container justify="center">
           <TextField
             onChange={updateAddress}
             label="Address"
@@ -207,6 +201,21 @@ export default function Login() {
               </MenuItem>
             ))}
           </TextField>
+          {accountType !== "Carer" ? null :
+          <TextField
+            className={classes.accountType}
+            select
+            label="Carer Type"
+            value={carerType}
+            onChange={updateCarerType}
+            variant="outlined"
+          >
+            {["Full-time", "Part-time"].map((option) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </TextField>}
         </Grid>
       </Grid>
       <Grid item xs={12}>
