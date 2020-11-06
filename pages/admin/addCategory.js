@@ -3,7 +3,6 @@ import React from 'react';
 import Link from 'next/link';
 
 import AdminNav from '../../src/components/common/AdminNav';
-import { authenticate } from '../../src/auth';
 
 import { makeStyles } from '@material-ui/core/styles';
 // import Container from '@material-ui/core/Container'
@@ -34,9 +33,6 @@ const useStyles = makeStyles((theme) => ({
 // }
 
 export default function AddCategory({categoryData}) {
-    if (typeof window !== "undefined") {
-        authenticate(window.location.pathname);
-    }
     const classes = useStyles();
     const url = process.env.API_PATH + '/categories/';
     console.log(url);

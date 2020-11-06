@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { authenticate } from '../../../auth';
 import OwnerNav from '../../../components/common/OwnerNav';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,9 +13,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Profile() {
-  if (typeof window !== "undefined") {
-    authenticate(window.location.pathname);
-  }
   const classes = useStyles()
 
 

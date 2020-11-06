@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import AdminNav from '../../src/components/common/AdminNav';
-import { authenticate } from '../../src/auth';
 
 import { makeStyles } from '@material-ui/core/styles';
 // import Container from '@material-ui/core/Container'
@@ -44,9 +43,6 @@ DeleteCategory.getInitialProps = ({query: { category_name }}) =>{
 };
 
 export default function DeleteCategory({category_name}) {
-    if (typeof window !== "undefined") {
-        authenticate(window.location.pathname);
-    }
     const classes = useStyles();
     // const {
     //     query : {

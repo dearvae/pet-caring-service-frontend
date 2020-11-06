@@ -1,6 +1,6 @@
 import Router from 'next/router'
 
-export async function authenticate(path) {
+export function authenticate(path) {
     const pageType = path.split('/')[1];
     let token = localStorage.getItem('token');
     const userType = JSON.parse(localStorage.getItem('userType'));
