@@ -15,18 +15,23 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
   },
   header: {
     marginTop: 100,
     marginBottom: 100
   },
   input: {
-    marginTop: 5,
-    marginBottom: 5
+    marginTop: 10,
+    marginBottom: 10
   },
   button: {
-    marginLeft: 5,
-    marginRight: 5
+    marginLeft: 10,
+    marginRight: 10
   }
 }));
 
@@ -99,18 +104,16 @@ export default function Login() {
   }
 
   return (
-    <Grid container className={classes.root}>
+    <Grid container className={classes.root} style={{backgroundImage: 'url(/image/login.jpg)'}}>
       <SuccessDialog />
       <ErrorDialog />
-      <Grid item className={classes.header} xs={12}>
-        <Grid container justify="center">
+      <Grid item xs={12} style={{backgroundColor: 'rgba(255, 255, 255, 0.3)'}}>
+        <Grid container className={classes.header} justify="center">
           <Typography variant="h1" component="h2" gutterBottom>
             Welcome to our website
           </Typography>
         </Grid>
-      </Grid>
-      <Grid item className={classes.input} xs={12}>
-        <Grid container justify="center">
+        <Grid container className={classes.input} justify="center">
           <TextField
             onChange={updateUsername}
             label="Username"
@@ -119,9 +122,7 @@ export default function Login() {
             onKeyDown={handleKeyPress}
           />
         </Grid>
-      </Grid>
-      <Grid item className={classes.input} xs={12}>
-        <Grid container justify="center">
+        <Grid container className={classes.input} justify="center">
           <TextField
             onChange={updatePassword}
             label="Password"
@@ -130,8 +131,6 @@ export default function Login() {
             onKeyDown={handleKeyPress}
           />
         </Grid>
-      </Grid>
-      <Grid item xs={12}>
         <Grid container justify="center">
           <Button className={classes.button} variant="contained" color="secondary" onClick={handleLogin}>
             Login
