@@ -68,7 +68,7 @@ export default function EditCategory({category_name}) {
         <div style={{margin:300}}>
             <h3>Editing Category</h3><br/>
             <form method="POST" action={url}>
-                Category Name: <input type="text" name="category_name" value={category_name} disabled></input><br/><br/>
+                Category Name: <input type="text" name="category_name" value={category_name} readOnly></input><br/><br/>
                 Base Price: <input type="text" name="base_price"></input><br/><br/>
                 <input type="submit" value="Submit"></input>
             </form>

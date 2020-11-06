@@ -34,7 +34,21 @@ export async function getServerSideProps() {
     const numpets = JSON.parse(JSON.stringify(numpetsobj)).count;
     console.log(numpetdays + " : " + numpets);
 
-    var summaryData = {petdays: numpetdays, pets: numpets};
+    var url3 = process.env.API_PATH + '/summary/carernum';
+    const res3 = await fetch(url3);
+    const carernumobj = await res3.json();
+    const carernum = JSON.parse(JSON.stringify(carernumobj)).count;
+
+    var url4 = process.env.API_PATH + '/summary/ownernum';
+    const res4 = await fetch(url4);
+    const ownernumobj = await res4.json();
+    const ownernum = JSON.parse(JSON.stringify(ownernumobj)).count;
+
+    var url5 = process.env.API_PATH + '/summary/totalSalary/' + month + '/' + year;
+    const res5 = await fetch(url5);
+    const salaryobj = await res5.json();
+    const salary = JSON.parse(JSON.stringify(salaryobj)).salary;
+    var summaryData = {petdays: numpetdays, pets: numpets, owners:ownernum, carers: carernum, salary: salary};
 
     // var url3 = '"http://lo/salary/:month/:year/:carer_name"'
 
@@ -67,24 +81,44 @@ export default function Home(props) {
         <div>
             <h2>Summary of the month</h2>
         </div>
-        <div>
-            <Grid container spacing={3} style={{padding:40}}>
-            <Grid item xs={4}>
+        <div style={{margin:40}}>
+            <Grid container spacing={3} style={{padding:40, marginRight:40, backgroundColor:'#dddddd'}}>
+            <Grid item xs={4} style={{borderRight:'1px solid white'}}>
                 <div>
-                <h5>Total number of pets taken care of</h5>
-                <p>{props.summaryData.pets}</p>
+                <h5>{props.summaryData.pets}</h5>
+                <p>pets taken care of in this month</p>
+                </div>
+            </Grid>
+            <Grid item xs={4} style={{borderRight:'1px solid white'}}>
+                <div>
+                <h5>{props.summaryData.petdays}</h5>
+                <p>petdays in this month</p>
                 </div>
             </Grid>
             <Grid item xs={4}>
                 <div>
-                <h5>Total number of pet days</h5>
-                <p>{props.summaryData.petdays}</p>
+                <h5>${props.summaryData.salary}</h5>
+                <p>paid to all carers in this month</p>
+                </div>
+            </Grid>
+            </Grid>
+            <Grid container spacing={3} style={{padding:40, marginRight:40, border:'1px solid white', backgroundColor:'#dddddd'}}>
+            <Grid item xs={4} style={{borderRight:'1px solid white'}}>
+                <div>
+                <h5>{props.summaryData.carers}</h5>
+                <p>carers are caring for pets</p>
+                </div>
+            </Grid>
+            <Grid item xs={4}style={{borderRight:'1px solid white'}}>
+                <div>
+                <h5>{props.summaryData.owners}</h5>
+                <p>owners are taking care of their pets in our platform</p>
                 </div>
             </Grid>
             <Grid item xs={4}>
                 <div>
-                <h5>Total salary to be paid to all carer takers</h5>
-                <p>{props.summaryData.sum}</p>
+                <h5>{parseInt(props.summaryData.owners) + parseInt(props.summaryData.carers)}</h5>
+                <p>users in our platform</p>
                 </div>
             </Grid>
             </Grid>
