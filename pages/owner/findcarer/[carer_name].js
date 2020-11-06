@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 
+import OwnerNav from '../../../src/components/common/OwnerNav';
 import CarerDetailCard from '../../../src/components/carer/CarerDetailCard'
 
 export async function getServerSideProps(context) {
@@ -20,6 +21,10 @@ export async function getServerSideProps(context) {
 
 export default function carerDetail(props) {
     return (
-        <CarerDetailCard info={props.info} reviewList={props.reviewList}/>
+        <div>
+            <OwnerNav />
+            <CarerDetailCard info={props.info} reviewList={props.reviewList}/>
+        </div>
+        
     );
 }

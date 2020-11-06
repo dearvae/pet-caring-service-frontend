@@ -26,17 +26,17 @@ export default function Home(props) {
 	const [petList, setPetList] = useState([]);
 	useEffect(() => {
 		setUsername(localStorage.getItem('username'));
-		fetch(process.env.API_PATH + `/pets/${username}`)
+		fetch(`${process.env.NEXT_PUBLIC_API_PATH}/pets/${username}`)
 		.then(res => res.json())
 		.then(petList => {
 			setPetList(petList);
-		})		
+		})	
 	  });
 	return (
 		<div className={classes.root}>
 			<OwnerNav />
 			<Title className={classes.title}>Pets List</Title>
-			{/* <PetTable petList={petList} /> */}
+			<PetTable petList={petList} />
 		</div>
 	);
 }

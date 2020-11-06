@@ -70,11 +70,11 @@ export default function ProfileView({ data }) {
               </StyledTableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row, i) => (
-                <StyledTableRow key={i}>
+              {/* {rows.map((row, i) => ( */}
+                <StyledTableRow >
                   { columns.map((col, j) => <StyledTableCell key={`${i}${j}`}>{ dataToString(row, col) }</StyledTableCell>)}
                 </StyledTableRow>
-              ))}
+              {/* ))} */}
             </TableBody>
           </Table>
         </TableContainer>
