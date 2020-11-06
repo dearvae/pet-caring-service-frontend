@@ -9,9 +9,10 @@ export async function getServerSideProps(context) {
     const petInfo = await res.json();
     console.log(petInfo);
     const { belongs } = petInfo;
-    res = await fetch(process.env.API_PATH + '/carers/category/' + belongs);
-    const carerList = await res.json();
-    console.log(carerList);
+    // res = await fetch(process.env.API_PATH + '/carers/category/' + belongs);
+    // const carerList = await res.json();
+    // console.log(carerList);
+    const carerList = {}
 
     return {
         props: {
@@ -23,8 +24,8 @@ export async function getServerSideProps(context) {
 export default function carerDetail(props) {
     return (
         <div>
-            <PetCard peiInfo={props.petInfo} />
-            <CarerTable carerList={props.carerList}/>   
+            <PetCard petInfo={props.petInfo} />
+            {/* <CarerTable carerList={props.carerList}/>    */}
         </div>
     );
 }
