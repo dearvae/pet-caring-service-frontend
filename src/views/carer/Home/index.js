@@ -87,8 +87,8 @@ export default function carerHomeView({ data }) {
       <Container className={classes.cardGrid} maxWidth="md">
         <Box m={1}>
           <ButtonGroup variant="contained" color="secondary" >
-            <Button disabled={disableSuccessfulBids} onClick={toggleSuccessful}>Current Pets</Button>
-            <Button disabled={disableUnsuccessfulBids} onClick={toggleUnsuccessful}>Upcoming Pets</Button>
+            <Button disabled={disableCurrentPets} onClick={toggleSuccessful}>Current Pets</Button>
+            <Button disabled={disableUpcomingPets} onClick={toggleUnsuccessful}>Upcoming Pets</Button>
           </ButtonGroup>
         </Box>
         <TableContainer component={Paper}>
