@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import { authenticate } from '../../../auth';
 import OwnerNav from '../../../components/common/OwnerNav';
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -53,9 +52,6 @@ const columns = [
 ];
 
 export default function HistoryOrdersView({ data }) {
-  if (typeof window !== "undefined") {
-    authenticate(window.location.pathname);
-  }
   const successfulBids = data.filter(row => row.is_successful);
   const unsuccessfulBids = data.filter(row => !row.is_successful);
   const [rows, setRows] = useState(successfulBids);

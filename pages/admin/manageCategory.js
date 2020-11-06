@@ -3,7 +3,6 @@ import React from 'react';
 import Link from 'next/link';
 
 import AdminNav from '../../src/components/common/AdminNav';
-import { authenticate } from '../../src/auth';
 
 import { makeStyles } from '@material-ui/core/styles';
 // import Container from '@material-ui/core/Container'
@@ -36,9 +35,6 @@ export async function getServerSideProps() {
 }
 
 export default function ManageCategory({categoryData}) {
-    if (typeof window !== "undefined") {
-        authenticate(window.location.pathname);
-    }
     const classes = useStyles()
     const deleteCategory = (category_name) => {
         console.log("entering method delete category");

@@ -3,7 +3,6 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Carousel, Typography } from 'antd';
 
-import { authenticate } from '../../src/auth';
 import CarerTable from '../../src/components/carer/CarerTable';
 import OwnerNav from '../../src/components/common/OwnerNav';
 
@@ -36,9 +35,6 @@ export async function getServerSideProps() {
   }
   
 export default function Home(props) {
-    if (typeof window !== "undefined") {
-        authenticate(window.location.pathname);
-    }
     const classes = useStyles()
 
     const contentStyle = {

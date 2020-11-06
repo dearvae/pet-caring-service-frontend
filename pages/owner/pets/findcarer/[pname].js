@@ -1,8 +1,5 @@
 import { useRouter } from 'next/router';
 
-import { authenticate } from '../../../../src/auth';
-
-
 export async function getServerSideProps(context) {
 
     const  { carer_name } = context.params;
@@ -20,10 +17,6 @@ export async function getServerSideProps(context) {
   }
 
 export default function carerDetail(props) {
-    if (typeof window !== "undefined") {
-        authenticate(window.location.pathname);
-    }
- 
     return (
        <div></div>
     );

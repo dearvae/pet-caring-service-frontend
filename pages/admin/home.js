@@ -2,7 +2,6 @@ import React from 'react';
 
 import AdminNav from '../../src/components/common/AdminNav';
 // import AdminSummary from '../../src/components/common/AdminSummary'
-import { authenticate } from '../../src/auth';
 
 import { makeStyles } from '@material-ui/core/styles';
 // import Container from '@material-ui/core/Container'
@@ -67,9 +66,6 @@ export async function getServerSideProps() {
   }
   
 export default function Home(props) {
-    if (typeof window !== "undefined") {
-        authenticate(window.location.pathname);
-    }
     const classes = useStyles()
 
 
