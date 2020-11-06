@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { authenticate } from '../../src/auth'
+import { authenticate } from '../../../src/auth'
 import CarerDetailCard from '../../../src/components/carer/CarerDetailCard'
 
 export async function getServerSideProps(context) {

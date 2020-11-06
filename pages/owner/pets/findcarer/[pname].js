@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { authenticate } from '../../src/auth'
+import { authenticate } from '../../../../src/auth';
 
 
 export async function getServerSideProps(context) {

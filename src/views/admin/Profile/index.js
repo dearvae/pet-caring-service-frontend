@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AdminNav from '../../../components/common/AdminNav';
-import { authenticate } from '../../src/auth';
+import { authenticate } from '../../../auth';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
