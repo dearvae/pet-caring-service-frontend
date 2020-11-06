@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Home(props) {
 	const classes = useStyles();
 	const [username, setUsername] = useState("");
-	const [petList, setPetList] = useState({});
+	const [petList, setPetList] = useState([]);
 	useEffect(() => {
 		setUsername(localStorage.getItem('username'));
 		fetch(process.env.API_PATH + `/pets/${username}`)
