@@ -16,10 +16,15 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
   },
   header: {
-    marginTop: 20,
-    marginBottom: 20
+    marginTop: 50,
+    marginBottom: 50
   },
   input: {
     marginTop: 5,
@@ -121,18 +126,16 @@ export default function Login() {
   }
 
   return (
-    <Grid container className={classes.root}>
+    <Grid container className={classes.root} style={{backgroundImage: 'url(/image/login.jpg)'}}>
       <SuccessDialog />
       <ErrorDialog />
-      <Grid item className={classes.header} xs={12}>
-        <Grid container justify="center">
+      <Grid item xs={12} style={{backgroundColor: 'rgba(255, 255, 255, 0.3)'}}>
+        <Grid container className={classes.header} justify="center">
           <Typography variant="h1" component="h2" gutterBottom>
             Creating Your Account
           </Typography>
         </Grid>
-      </Grid>
-      <Grid item className={classes.input} xs={12}>
-        <Grid container justify="center">
+        <Grid container className={classes.input} justify="center">
           <TextField
             onChange={updateUsername}
             label="Username"
@@ -148,9 +151,7 @@ export default function Login() {
             onKeyDown={handleKeyPress}
           />
         </Grid>
-      </Grid>
-      <Grid item className={classes.input} xs={12}>
-        <Grid container justify="center">
+        <Grid container className={classes.input} justify="center">
           <TextField
             onChange={updateName}
             label="Name"
@@ -166,9 +167,7 @@ export default function Login() {
             onKeyDown={handleKeyPress}
           />
         </Grid>
-      </Grid>
-      <Grid item className={classes.input} xs={12}>
-        <Grid container justify="center">
+        <Grid container className={classes.input} justify="center">
           <TextField
             onChange={updateArea}
             label="Area"
@@ -184,9 +183,7 @@ export default function Login() {
             onKeyDown={handleKeyPress}
           />
         </Grid>
-      </Grid>
-      <Grid item className={classes.input} xs={12}>
-        <Grid container justify="center">
+        <Grid container className={classes.input} justify="center">
           <TextField
             className={classes.accountType}
             select
@@ -216,16 +213,14 @@ export default function Login() {
               </MenuItem>
             ))}
           </TextField>}
-        </Grid>
-      </Grid>
-      <Grid item xs={12}>
-        <Grid container justify="center">
-          <Button className={classes.button} variant="contained" color="secondary" onClick={handleRegister}>
-            Create Account
-          </Button>
-          <Button className={classes.button} variant="contained" color="secondary" onClick={rerouteToLogin}>
-            Back To Login
-          </Button>
+          <Grid container className={classes.input} justify="center">
+            <Button className={classes.button} variant="contained" color="secondary" onClick={handleRegister}>
+              Create Account
+            </Button>
+            <Button className={classes.button} variant="contained" color="secondary" onClick={rerouteToLogin}>
+              Back To Login
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
