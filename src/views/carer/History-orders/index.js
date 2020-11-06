@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
+import React, { useState } from 'react';
+
+import CarerNav from '../../../components/common/CarerNav';
+
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button'
-import ButtonGroup from '@material-ui/core/ButtonGroup'
-import Container from '@material-ui/core/Container'
-import Table from '@material-ui/core/Table'
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Container from '@material-ui/core/Container';
+import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import CarerNav from '../../../components/common/CarerNav'
 import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({

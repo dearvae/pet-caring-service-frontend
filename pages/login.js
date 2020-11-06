@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Router from 'next/router';
+
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -7,7 +9,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import makeStyles  from '@material-ui/core/styles/makeStyles';
-import Router from 'next/router'
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
@@ -29,8 +30,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Login({ data }) {
-  const { API_PATH } = data;
+export default function Login() {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -41,14 +41,14 @@ export default function Login({ data }) {
   const updatePassword = e => setPassword(e.target.value);
   const updateUsername = e => setUsername(e.target.value);
 
-  const rerouteToRegister = () => Router.push('register');
+  const rerouteToRegister = () => Router.push('/register');
   const rerouteToHomePage = res => {
     res.json().then(json => {
-      localStorage.setItem('userType', json.userType);
+      localStorage.setItem('userType', JSON.stringify(json.userType));
       localStorage.setItem('token', json.token);
       localStorage.setItem('username', json.username);
       setShowSuccessDialog(true);
-      setTimeout(() => Router.push(`${json.userType[0]}/home`), 3000);
+      setTimeout(() => Router.push(`/${json.userType[0]}/home`), 3000);
     });
   };
 
@@ -58,7 +58,7 @@ export default function Login({ data }) {
   });
   const handleKeyPress = e => e.keyCode === 13 ? handleLogin() : '';
   const handleLogin = () => {
-    fetch(`${API_PATH}/auth/login`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_PATH}/auth/login`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -143,8 +143,4 @@ export default function Login({ data }) {
       </Grid>
     </Grid>
   )
-}
-
-export async function getStaticProps() {
-  return { props: { data: { API_PATH: process.env.API_PATH } } };
 }

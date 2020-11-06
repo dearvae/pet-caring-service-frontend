@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+
 import CarerDetailCard from '../../../src/components/carer/CarerDetailCard'
 
 export async function getServerSideProps(context) {
@@ -18,7 +19,6 @@ export async function getServerSideProps(context) {
   }
 
 export default function carerDetail(props) {
- 
     return (
         <CarerDetailCard info={props.info} reviewList={props.reviewList}/>
     );

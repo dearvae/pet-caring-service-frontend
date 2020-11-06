@@ -1,10 +1,12 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Carousel } from 'antd';
+import React from 'react';
+
 import 'antd/dist/antd.css';
-import OwnerNav from '../../src/components/common/OwnerNav'
-import CarerTable from '../../src/components/carer/CarerTable'
-import { Typography } from 'antd';
+import { Carousel, Typography } from 'antd';
+
+import CarerTable from '../../src/components/carer/CarerTable';
+import OwnerNav from '../../src/components/common/OwnerNav';
+
+import { makeStyles } from '@material-ui/core/styles';
 
 const { Title } = Typography;
 
@@ -24,7 +26,7 @@ export async function getServerSideProps() {
     const res = await fetch(process.env.API_PATH + '/carers');
     const carerList = await res.json();
     console.log(carerList);
-
+    
     return {
         props: {
             carerList,
@@ -44,8 +46,11 @@ export default function Home(props) {
         textAlign: 'center',
         background: '#364d79',
     };
-
+    if (typeof window !== 'undefined') {
+        console.log(localStorage.getItem('username'));
+    }
     return (
+        
     <div className={classes.root}>
         <OwnerNav />
         <Title className={classes.title}>Welcome to Pet Caring Service System</Title>
