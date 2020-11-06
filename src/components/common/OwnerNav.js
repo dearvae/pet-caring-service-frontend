@@ -87,6 +87,9 @@ const Nav = (props) => {
         <Link href="/owner/profile" passHref>
           <Button className={classes.button}>My Profile</Button>
         </Link>
+        <Link href="/owner/history-orders" passHref>
+          <Button className={classes.button}>Order History</Button>
+        </Link>
         <Link href="/login">
           <Button className={classes.button} startIcon={<ExitToAppIcon />} onClick={clearLocalStorage}>
             Sign Out
