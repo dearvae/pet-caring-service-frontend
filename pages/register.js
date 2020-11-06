@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Router from 'next/router'
+
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -8,7 +10,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import makeStyles  from '@material-ui/core/styles/makeStyles';
 import MenuItem from '@material-ui/core/MenuItem';
-import Router from 'next/router'
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 

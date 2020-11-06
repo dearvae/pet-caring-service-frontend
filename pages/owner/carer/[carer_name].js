@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+
+import { authenticate } from '../../src/auth'
 import CarerDetailCard from '../../../src/components/carer/CarerDetailCard'
 
 export async function getServerSideProps(context) {
@@ -18,6 +20,9 @@ export async function getServerSideProps(context) {
   }
 
 export default function carerDetail(props) {
+    if (typeof window !== "undefined") {
+        authenticate(window.location.pathname);
+    }
  
     return (
         <CarerDetailCard info={props.info} reviewList={props.reviewList}/>

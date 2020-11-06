@@ -1,8 +1,12 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import AdminNav from '../../src/components/common/AdminNav'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import React from 'react';
+
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import AdminNav from '../../src/components/common/AdminNav';
+import { authenticate } from '../../src/auth';
+
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 // import Container from '@material-ui/core/Container'
 import Table from '@material-ui/core/Table';
@@ -12,6 +16,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+
 import { unstable_renderSubtreeIntoContainer } from 'react-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +45,9 @@ EditCategory.getInitialProps = ({query: { category_name }}) =>{
 };
 
 export default function EditCategory({category_name}) {
+    if (typeof window !== "undefined") {
+        authenticate(window.location.pathname);
+    }
     const classes = useStyles();
     // const {
     //     query : {
