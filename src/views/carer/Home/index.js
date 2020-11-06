@@ -83,7 +83,7 @@ export default function carerHomeView({ data }) {
 
   return (
     <div>
-      <OwnerNav />
+      <CarerNav />
       <Container className={classes.cardGrid} maxWidth="md">
         <Box m={1}>
           <ButtonGroup variant="contained" color="secondary" >
