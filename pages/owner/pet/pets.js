@@ -66,7 +66,7 @@ export default function Home(props) {
 		.then(petList => {
 			setPetList(petList);
 		})	
-	  });
+	  }, []);
 	return (
 		<div className={classes.root}>
 			<Modal
