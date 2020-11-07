@@ -10,11 +10,13 @@ export async function getServerSideProps(context) {
     const info = await res.json();
     res = await fetch(process.env.API_PATH + '/carers/reviews-by-rating/' + carer_name);
     const reviewList = await res.json();
+    res = await fetch(process.env.API_PATH + '/carers/category-list/' + carer_name);
+    const categoryList = await res.json();
     console.log(info);
 
     return {
         props: {
-            info, reviewList
+            info, reviewList, categoryList
         }
     }
   }
@@ -23,7 +25,7 @@ export default function carerDetail(props) {
     return (
         <div>
             <OwnerNav />
-            <CarerDetailCard info={props.info} reviewList={props.reviewList}/>
+            <CarerDetailCard info={props.info} reviewList={props.reviewList} categoryList={props.categoryList}/>
         </div>
         
     );
