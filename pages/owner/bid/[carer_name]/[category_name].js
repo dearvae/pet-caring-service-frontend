@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Router from 'next/router';
+
 import moment from "moment";
 import 'antd/dist/antd.css';
 import makeStyles from '@material-ui/core/styles/makeStyles'
@@ -82,16 +84,20 @@ export default function BidPage(props) {
           'daily_price' : carerPrice,
         };
         console.log(values);
-        fetch(process.env.NEXT_PUBLIC_API_PATH + `/bids/`,  
-        {
-            method: 'post',
-            headers: {
-                "Content-Type": "application/json",
-            },
+            fetch(process.env.NEXT_PUBLIC_API_PATH + `/bids/`,  
+            {
+                method: 'post',
+                headers: {
+                    "Content-Type": "application/json",
+                },
             body: JSON.stringify(values)});
+
+            Router.push('/owner/history-orders');
+
         }
     return (
         <div className={classes.root}>
+            <h1> Create a Bid : </h1>
             <Form  name="bid_form"
             labelCol={{ span: 4, }}  wrapperCol={{ span: 14,}} layout="horizontal" onFinish={onFinish}
       >

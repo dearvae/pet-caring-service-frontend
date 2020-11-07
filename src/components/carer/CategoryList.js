@@ -3,7 +3,7 @@ import MaterialTable from 'material-table'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import InfoIcon from '@material-ui/icons/Info';
 import { forwardRef } from 'react';
-
+import { AccountBookOutlined } from '@ant-design/icons';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
 import Check from '@material-ui/icons/Check';
@@ -49,23 +49,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ReviewList = (props) => {
+const PriceList = (props) => {
     const classes = useStyles()
     const router = useRouter()
-    const { reviewList } = props;
-    const { review_rating, review_content, review_date } = reviewList;
+    const { categoryList } = props;
 
   return (
     <div className={classes.root}>
     <MaterialTable
       icons={tableIcons}
-      title="Review List"
+      title="Category Price List"
       columns={[
-        { title: 'Content', field: 'review_content' },
-        { title: 'Rating', field: 'review_rating' },
-        { title: 'Date', field: 'review_date' },
+        { title: 'Category', field: 'category_name' },
+        { title: 'Price', field: 'carer_price' }
       ]}
-      data={reviewList}        
+      data={categoryList}      
       options={{
         search: true
       }}
@@ -74,4 +72,4 @@ const ReviewList = (props) => {
     )
 }
 
-export default ReviewList
+export default PriceList
