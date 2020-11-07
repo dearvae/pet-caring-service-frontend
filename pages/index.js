@@ -19,6 +19,7 @@ const reroute = () => {
   .then(res => {
     if (res.ok) {
       Router.push(`/${userType[0]}/home`);
+      return;
     }
     clearLocalStorage();
     Router.push('/login');

@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home(props) {
 	const classes = useStyles();
-	const [username, setUsername] = useState("");
 	const [petList, setPetList] = useState([]);
 	const [visible, setVisible] = useState(false);
 	const [form] = Form.useForm();
@@ -60,8 +59,7 @@ export default function Home(props) {
         fetch(url, postMethod).then(window.location.reload());
         }, []);
 	useEffect(() => {
-		setUsername(localStorage.getItem('username'));
-		fetch(`${process.env.NEXT_PUBLIC_API_PATH}/pets/${username}`)
+		fetch(`${process.env.NEXT_PUBLIC_API_PATH}/pets/${localStorage.getItem('username')}`)
 		.then(res => res.json())
 		.then(petList => {
 			setPetList(petList);
