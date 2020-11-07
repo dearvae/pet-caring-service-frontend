@@ -11,8 +11,7 @@ const useStyles = makeStyles((theme) => ({
 		paddingBottom: theme.spacing(3)
     },
     button: {
-        float: right,
-        paddingRight: theme.spacing(10),
+        marginLeft: theme.spacing(50),
     }
 }));
 
@@ -25,6 +24,19 @@ export default function ProfileView(props) {
     const [allCategory, setAllCategory] = useState([]);
     const onFinish = (values) => {
       console.log(values);
+      const putMethod = {
+        method: 'PUT', // Method itself
+        headers: {
+            "Content-Type": "application/json",
+          },
+        body: JSON.stringify({
+            phone : values.phone,
+            area : values.area,
+            address: values.address
+        })  // We send data in JSON format
+       }
+    const url = `${process.env.NEXT_PUBLIC_API_PATH}/carers/${localStorage.getItem('username')}`;
+    fetch(url, putMethod).then(window.location.reload());
     };
     const showModal = () => {
         setVisible(true);
@@ -91,19 +103,23 @@ export default function ProfileView(props) {
             </Form.Item>
             </Form>
         </Modal>
-              <Form  name="bid_form"  
+              <Form  name="a"  
             labelCol={{ span: 4, }}  wrapperCol={{ span: 14,}} layout="horizontal" onFinish={onFinish}
         >
-            <Form.Item disabled label="Name" id="carer_name" >
-              <Input  value={data.carer_name}/>
+            <Form.Item  label="Name" id="carer_name" >
+              <Input disabled value={data.carer_name}/>
             </Form.Item>
   
-            <Form.Item label="Phone" id="phone" >
-              <Input  value={data.phone}/>
+            <Form.Item label="Phone" name="phone" >
+              <Input  placeholder={data.phone}/>
             </Form.Item>
   
-            <Form.Item label="Area" id="area" >
-              <Input  value={data.area}/>
+            <Form.Item label="Area" name="area" >
+              <Input  placeholder={data.area}/>
+            </Form.Item>  
+
+            <Form.Item label="Address" name="address" >
+              <Input  placeholder={data.address}/>
             </Form.Item>  
   
             <Form.Item

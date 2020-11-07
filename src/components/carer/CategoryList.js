@@ -56,9 +56,10 @@ const PriceList = (props) => {
 
   return (
     <div className={classes.root}>
+
     <MaterialTable
       icons={tableIcons}
-      title="Category Price List"
+      title="My Category List"
       columns={[
         { title: 'Category', field: 'category_name' },
         { title: 'Price', field: 'carer_price' }
