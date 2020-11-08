@@ -126,7 +126,7 @@ export default function Home(props) {
             </Grid>
             <Grid item xs={4}>
                 <div>
-                <h5>{parseInt(props.summaryData.totalUsers)}</h5>
+                <h5>{props.summaryData.totalUsers}</h5>
                 <p>users in our platform</p>
                 </div>
             </Grid>
