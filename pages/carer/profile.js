@@ -79,7 +79,7 @@ export default function ProfileView(props) {
                 setCategoryList(list);
                 }) 
             }) 
-	  });
+	  }, []);
     return (
       <div>
         <CarerNav />
