@@ -44,7 +44,8 @@ export default function BidPage(props) {
     const [calculatedPrice, setCalculatedPrice] = useState(0);
     const [petList, setPetList] = useState([]);
     useEffect(() => {
-        setUsername(localStorage.getItem('username'));
+        const username = localStorage.getItem('username');
+        setUsername(username);
         if (username != "") {
             fetch(process.env.NEXT_PUBLIC_API_PATH + `/pets/category/${username}/${props.category_name}`)
             .then(res => res.json())
