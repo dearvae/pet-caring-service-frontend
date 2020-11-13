@@ -92,7 +92,7 @@ export default function BidPage(props) {
                 },
             body: JSON.stringify(values)});
 
-            Router.push('/owner/history-orders');
+            setTimeout(() => Router.push('/owner/history-orders'), 3000);
 
         }
     return (
