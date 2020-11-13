@@ -57,7 +57,7 @@ export default function BidPage(props) {
         .then(price => {
             setCarerPrice(price.carer_price);
         })
-    });
+    }, []);
     const rangeConfig = {
         rules: [{ type: 'array', required: true, message: 'Please select time!' }],
       };
@@ -84,7 +84,7 @@ export default function BidPage(props) {
           'daily_price' : carerPrice,
         };
         console.log(values);
-            fetch(process.env.NEXT_PUBLIC_API_PATH + `/bids/`,  
+            fetch(process.env.NEXT_PUBLIC_API_PATH + `/bids/`,
             {
                 method: 'post',
                 headers: {
