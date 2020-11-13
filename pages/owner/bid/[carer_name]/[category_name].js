@@ -90,9 +90,7 @@ export default function BidPage(props) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-            body: JSON.stringify(values)});
-
-            setTimeout(() => Router.push('/owner/history-orders'), 3000);
+            body: JSON.stringify(values)}).then(() => setTimeout(() => Router.push('/owner/history-orders'), 3000));
 
         }
     return (
