@@ -50,7 +50,14 @@ export async function getServerSideProps() {
     const res5 = await fetch(url5);
     const salaryobj = await res5.json();
     const salary = JSON.parse(JSON.stringify(salaryobj)).salary;
-    var summaryData = {petdays: numpetdays, pets: numpets, owners:ownernum, carers: carernum, salary: salary};
+
+    var url6 = process.env.API_PATH + '/summary/totalUsers';
+    const res6 = await fetch(url6);
+    const totalUsersObj = await res6.json();
+    const totalUsers = JSON.parse(JSON.stringify(totalUsersObj)).count;
+
+    var summaryData = {petdays: numpetdays, pets: numpets, owners:ownernum, carers: carernum, salary: salary, totalUsers : totalUsers};
+    
 
     // var url3 = '"http://lo/salary/:month/:year/:carer_name"'
 
@@ -119,7 +126,7 @@ export default function Home(props) {
             </Grid>
             <Grid item xs={4}>
                 <div>
-                <h5>{parseInt(props.summaryData.owners) + parseInt(props.summaryData.carers)}</h5>
+                <h5>{props.summaryData.totalUsers}</h5>
                 <p>users in our platform</p>
                 </div>
             </Grid>
