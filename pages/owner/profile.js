@@ -32,7 +32,7 @@ export default function ProfileView(props) {
         })  // We send data in JSON format
        }
     const url = `${process.env.NEXT_PUBLIC_API_PATH}/owners/${localStorage.getItem('username')}`;
-    fetch(url, putMethod).then(window.location.reload());
+    fetch(url, putMethod).then(() => setTimeout(() => window.location.reload(), 3000));
     };
     useEffect(() => {
         let url = `${process.env.NEXT_PUBLIC_API_PATH}/owners/${localStorage.getItem('username')}`;

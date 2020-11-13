@@ -56,7 +56,7 @@ export default function Home(props) {
            }
            console.log( postMethod.body);
         const url = `${process.env.NEXT_PUBLIC_API_PATH}/pets/`;
-        fetch(url, postMethod).then(() => setTimeout(() => window.location.reload(), 5000));
+        fetch(url, postMethod).then(() => setTimeout(() => window.location.reload(), 3000));
         }, []);
 	useEffect(() => {
 		fetch(`${process.env.NEXT_PUBLIC_API_PATH}/pets/${localStorage.getItem('username')}`)
