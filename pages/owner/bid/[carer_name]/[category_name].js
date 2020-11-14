@@ -44,7 +44,8 @@ export default function BidPage(props) {
     const [calculatedPrice, setCalculatedPrice] = useState(0);
     const [petList, setPetList] = useState([]);
     useEffect(() => {
-        setUsername(localStorage.getItem('username'));
+        const username = localStorage.getItem('username');
+        setUsername(username);
         if (username != "") {
             fetch(process.env.NEXT_PUBLIC_API_PATH + `/pets/category/${username}/${props.category_name}`)
             .then(res => res.json())
@@ -57,7 +58,7 @@ export default function BidPage(props) {
         .then(price => {
             setCarerPrice(price.carer_price);
         })
-    });
+    }, []);
     const rangeConfig = {
         rules: [{ type: 'array', required: true, message: 'Please select time!' }],
       };
@@ -84,15 +85,13 @@ export default function BidPage(props) {
           'daily_price' : carerPrice,
         };
         console.log(values);
-            fetch(process.env.NEXT_PUBLIC_API_PATH + `/bids/`,  
+            fetch(process.env.NEXT_PUBLIC_API_PATH + `/bids/`,
             {
                 method: 'post',
                 headers: {
                     "Content-Type": "application/json",
                 },
-            body: JSON.stringify(values)});
-
-            Router.push('/owner/history-orders');
+            body: JSON.stringify(values)}).then(() => setTimeout(() => Router.push('/owner/history-orders'), 3000));
 
         }
     return (
